@@ -221,7 +221,7 @@ public:
 
 ```
 
-In the ```game2048.cpp`` we did the implementation of functions:
+In the ``game2048.cpp`` we did the implementation of functions:
 
 1- ``Pos EmptyPos()``: Choose randomly a position in the board to show tiles when the position is empty.
 
@@ -413,4 +413,8 @@ And the ``scoreT`` should be showed in the score label .
 }
 
 ```
+ 
  # Conclusion:
+ 
+ This project was rewarding, we used the modules we saw in class and learned new knowledge. 
+ 
