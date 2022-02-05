@@ -3,17 +3,20 @@
 # Introduction
 
 The 2048 game is  a game used to combine the numbers displayed on the tiles until we reach 2048. It has 16 grids.
+
 When you start the game, there will be two “tiles” on the grid, each displaying the number 2.
-We use  the directional keys **(Z = Up ,S = Down ,Q = Left ,D = Right)** on the keyboard to move the tiles around. When two equal tiles collide, they combine to give you one greater tile that displays their sum. The more we do this, obviously, the higher the tiles get and the more crowded the board becomes. 
-to realize that with Qt we create three classes (gboard, cellule and game2048).
+We use  the directional keys **(Z = Up ,S = Down ,Q = Left ,D = Right)** on the keyboard to move the tiles around. When two equal tiles collide, they combine to give one greater tile that displays their sum. The more we do this, obviously, the higher the tiles get and the more crowded the board becomes. 
+
+To realize that with Qt we create three classes: gboard, cellule and game2048.
 
 ![Capture](https://user-images.githubusercontent.com/86742217/152626535-d6f0111b-5756-4cee-b17a-08d0535a06bb.PNG)
 
+**Here is our code :** 
 
 ### GBoard Class
 
 We used this class to create the main board of the game , which contains tiles, score ,indication and a button to exit the game.
- We started by defining the size of the board, its name *2048 Game* and the main interface as a vertical layout using the QVBoxLayout, then we set the interface on which we will create the 16 tiles using the QGridLayout.
+ We started by defining the size of the board, its name "**2048 Game**" and the main interface as a vertical layout using the QVBoxLayout, then we set the interface on which we will create the 16 tiles using the QGridLayout.
 
 In the ``gboard.h`` :
 
@@ -46,6 +49,12 @@ resize(650, 600);
        mainL->insertLayout(0, boardL);
 ```
 
+The background color of the board:
+
+```cpp
+setStyleSheet("gboard { background-color: rgba(95,158,160) }");
+```
+
 **Score:** A label which gets the value 0 in the beginning of the game.
 
 ```cpp
@@ -56,11 +65,7 @@ s = new QLabel(QString("SCORE: %1").arg(0));
 
 
 ```
-The background color of the board:
 
-```cpp
-setStyleSheet("gboard { background-color: rgba(95,158,160) }");
-```
 **Exit:** A push button to close the application. We connect it to the signal `clicked()` and the slot`close()`.
 
 
@@ -83,7 +88,7 @@ I = new QLabel(QString("The directional keys Z = Up ,S = Down ,Q = Left ,D = Rig
        mainL->insertWidget(1, I, 0, Qt::AlignLeft);
 ```
 
-Before completing the **gboard class**, we moved to the *cellule class* and **game2048 class**.
+Before completing the **gboard class**, we moved to the **cellule class** and **game2048 class**.
 
 ### Cellule Class
 
@@ -177,11 +182,12 @@ void cellule::cases()
 ```
 ### Game2048 Class
  This class contains the logical part of the game, in which two equal tiles collide, they combine to give you one greater tile that displays their sum, until we reach 2048. It has 16 cells.
+ 
 To realize these operations we created some functions.
 
 In the ```game2048.h```:
 
--We declared a constant c (number of the cells 4*4), and a position which is an integer array of length 2  (we used the #include <array>):
+We declared a constant c (number of the cells 4*4), and a position which is an integer array of length 2 ``Pos = array<int, 2>``  (we used the ``#include<array>`` ):
 
 
 ```cpp
@@ -238,11 +244,12 @@ Pos game2048::EmptyPos()
 
 ```
 
-2- `` void reset()`` : Concerns the initial state of the game.In it’s implementation, we used the ``memeset()`` function to show the tiles in the empty positions.`` reset()`` show two tiles in the beginning of the game containing the number 2.
+2- `` void reset()`` : Concerns the initial state of the game.In it’s implementation, we used the ``memeset()`` function to show the tiles in the empty positions.
 
-`` b[rand()%c][rand()%c] = 2; `` and   ``  b[pos[0]][pos[1]] = 2;``
-generates two random positions to put tiles.
-And we initialize the score to be 0 when we start the game, and the ``change`` should be true.
+``reset()`` show two tiles in the beginning of the game containing the number 2.
+
+`` b[rand()%c][rand()%c] = 2; `` and   ``  b[pos[0]][pos[1]] = 2;`` generates two random positions to put tiles.
+And we initialized the score to be 0 when we start the game, and the ``change`` should be true.
 
 ```cpp
 
@@ -264,7 +271,7 @@ void game2048::reset()
 
 
 3- `` bool full()``: To check if the board is full of tiles or not . 
-We used the function ``all_of()`` defined in <algorithm> library, to verify from the first position to the last one if the board is full or not.
+We used the function ``all_of()`` defined in ``<algorithm>`` library, to verify from the first position to the last one if the board is full or not.
 
 ```cpp
 bool game2048::full()
@@ -332,7 +339,7 @@ void game2048::movement(bool horizontal, bool vertical)
 
                               
                               
-To complete our game, we returned to the *gboard* class and declared two functions which allowed us to link the three classes.
+To complete our game, we returned to the **gboard** class and declared two functions which allowed us to link the three classes.
 
 We used the ``cellule * cell[c][c] {}`` to store the pointer of the interface for 4x4 squares.
 
@@ -356,8 +363,11 @@ private:
 protected:
    void keyPressEvent(QKeyEvent *e);
 ```
+
 1-``void board()``: Draw the tiles on the board. 
+
 ``cell[i][j]->cases()``: to style each cell depending on its number.
+
 `` cell[i][j] = new cellule(g.b[i][j])``: to match each cell to that of the game2048 class.
 ```cpp
 void gboard::board()
@@ -378,6 +388,11 @@ void gboard::board()
 
 ```
 2-``void keyPressEvent(QKeyEvent *e)``: Listen for keyboard key press events and then trigger different game updates methods.
+We used the following directional keys: 
+Z -> Up
+S -> Down
+Q -> Left
+D -> Right
 
 ```cpp
 void gboard::keyPressEvent(QKeyEvent *e)
@@ -416,5 +431,6 @@ And the ``scoreT`` should be showed in the score label .
  
  # Conclusion:
  
- This project was rewarding, we used the modules we saw in class and learned new knowledge. 
+ This game can be coded in different ways using different programs. In our case, we code it with de c++ using QT Creator.
+ This project was rewarding, we used the modules we saw in class and learned new knowledge and algorithms . It was a nice experience that gave us ideas and desire to make other games.
  
