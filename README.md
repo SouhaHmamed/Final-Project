@@ -11,7 +11,7 @@ To realize that with Qt we create three classes: gboard, cellule and game2048.
 
 ![Capture](https://user-images.githubusercontent.com/86742217/152626535-d6f0111b-5756-4cee-b17a-08d0535a06bb.PNG)
 
-> **Here is our code :** [qtGame.rar](https://github.com/SouhaHmamed/Final-Project/blob/main/qtGame.rar)
+> **Here is our project :** [qtGame.rar](https://github.com/SouhaHmamed/Final-Project/blob/main/qtGame.rar)
 
 ### GBoard Class
 
