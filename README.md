@@ -110,7 +110,7 @@ public:
 In the ``cellule.cpp``:
 
 The position of the number should be in the center of the tile. And, using the switch we attribute to each tile a different color.
- The numbers that should be in the game are : 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048.
+ The numbers of the game are : 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048.
 
 *setStyleSheet(style.arg("use the background color)").arg("and here the number color")*
 
@@ -229,7 +229,7 @@ public:
 
 In the ``game2048.cpp`` we did the implementation of functions:
 
-1- ``Pos EmptyPos()``: Choose randomly a position in the board to show tiles when the position is empty.
+1- ``Pos EmptyPos()``: Randomly choose a position in the board to show tiles when the position is empty.
 
 ```cpp
 Pos game2048::EmptyPos()
@@ -432,5 +432,5 @@ And the ``scoreT`` should be showed in the score label .
  # Conclusion:
  
  This game can be coded in different ways using different programs. In our case, we code it with de c++ using QT Creator.
- This project was rewarding, we used the modules we saw in class and learned new knowledge and algorithms . It was a nice experience that gave us ideas and desire to make other games.
+ This project was rewarding, we used the modules we saw in class and learned new knowledge and algorithms . It was a nice experience that gave us ideas and desire to make more games.
  
